@@ -1,0 +1,10 @@
+.counter {
+    height: 130px;
+    width: 250px;
+    border: 2px solid;
+    border-color: blue;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    font-size: larger;
+}
