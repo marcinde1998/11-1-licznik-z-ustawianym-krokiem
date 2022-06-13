@@ -6,8 +6,7 @@ function Step(props){
         <div>
             <p><strong>Krok: </strong>
             <input type="number" value={props.changeValueInput} onChange={(event) => props.stepMethod(event)}></input></p>
-        </div>
-        
+        </div>        
     )
 }
 

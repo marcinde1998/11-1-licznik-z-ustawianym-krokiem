@@ -6,6 +6,7 @@ import ButtonsPanel from './ButtonsPanel';
 
 import Step from './Step'
 
+
 class Counter extends Component {
 
     constructor(props) {
@@ -17,29 +18,27 @@ class Counter extends Component {
         };
 
     }
-    
-    stepChange = (event) => {
 
-        this.setState({
-            stepValue: Math.floor(event.target.value)
-        })
+    stepChange = (event) => {
+        if(event.target.value < 1) return;
         
+        this.setState({
+            stepValue: Math.floor(event.target.value),
+        });
     }
-    
+
     changeValue = (action) => { // ES6 method
 
         this.setState((prevState, prevProps) => {
 
             let currentCounterValue = prevState.counterValue;
             let currentStepValue = prevState.stepValue;
-            
+
             if (action === 'add') {
                 currentCounterValue += this.state.stepValue;
             } else if (action === 'reinit') {
                 currentCounterValue = prevProps.initValue;
                 currentStepValue = prevProps.initStepValue;
-
-
             } else {
                 currentCounterValue = 0;
             }
@@ -57,9 +56,9 @@ class Counter extends Component {
             <div className="counter">
                 <strong>Licznik:</strong>
                 <Display displayValue={this.state.counterValue} />
-                <ButtonsPanel buttonMethod={this.changeValue} changeValueInput={this.state.stepValue}/>
-                <Step stepMethod={this.stepChange} changeValueInput={this.state.stepValue}/>
-                
+                <ButtonsPanel buttonMethod={this.changeValue} changeValueInput={this.state.stepValue} />
+                <Step stepMethod={this.stepChange} changeValueInput={this.state.stepValue} />
+
             </div>
         );
     }
